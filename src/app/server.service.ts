@@ -25,5 +25,18 @@ export class ServerService {
                     return data;
                 }
             )
+            .catch(
+                (error: Response) => {                    
+                    return Observable.throw("Something went wrong");
+                }
+            )
+    }
+    getAppName(){
+        return this.http.get("https://udemy-ng-http-ed289.firebaseio.com/data/appName.json")
+            .map(
+                (response: Response)=> {
+                    return response.json();
+                }
+            )
     }
 }
